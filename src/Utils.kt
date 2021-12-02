@@ -2,12 +2,15 @@ import java.io.File
 import java.math.BigInteger
 import java.security.MessageDigest
 
-/**
- * Reads lines from the given input txt file.
- */
 fun readInput(name: String) = File("src", "$name.txt").readLines()
+fun readInput(dayNumber: Int, testInput: Boolean = false) =
+    dayNumber.toString()
+        .padStart(2,'0')
+        .let { if (testInput) "Day${it}_test" else "Day$it" }
+        .let { readInput(it) }
+fun <T> readInput(dayNumber: Int, testInput: Boolean = false, transform: (String) -> T) =
+    readInput(dayNumber, testInput).map(transform)
 
-/**
- * Converts string to md5 hash.
- */
+
+@Suppress("unused") // probably used later on??
 fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray())).toString(16)
