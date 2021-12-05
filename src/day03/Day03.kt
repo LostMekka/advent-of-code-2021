@@ -1,3 +1,8 @@
+package day03
+
+import readInput
+import shouldBe
+
 fun main() {
     val testInput = readInput(3, testInput = true)
     part1(testInput) shouldBe 198

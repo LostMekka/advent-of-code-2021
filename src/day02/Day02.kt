@@ -1,3 +1,8 @@
+package day02
+
+import readInput
+import shouldBe
+
 fun main() {
     val testInput = readInput(2, testInput = true) { parseMove(it) }
     part1(testInput) shouldBe 150
