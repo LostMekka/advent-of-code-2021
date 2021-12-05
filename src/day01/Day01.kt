@@ -1,7 +1,7 @@
 package day01
 
-import readInput
-import shouldBe
+import util.readInput
+import util.shouldBe
 
 fun main() {
     fun part1(input: List<String>): Int =

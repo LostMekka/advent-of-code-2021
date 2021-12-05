@@ -1,7 +1,7 @@
 package day02
 
-import readInput
-import shouldBe
+import util.readInput
+import util.shouldBe
 
 fun main() {
     val testInput = readInput(2, testInput = true) { parseMove(it) }
