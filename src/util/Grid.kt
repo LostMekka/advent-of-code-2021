@@ -5,7 +5,11 @@ class Grid<T>(val width: Int, val height: Int, init: (Point) -> T) {
     private fun index(x: Int, y: Int) = x + y * width
     private fun index(p: Point) = p.x + p.y * width
     private fun point(i: Int) = Point(i % width, i / width)
+    operator fun get(x: Int, y: Int) = items[index(x, y)]
     operator fun get(p: Point) = items[index(p)]
+    operator fun set(x: Int, y: Int, value: T) {
+        items[index(x, y)] = value
+    }
     operator fun set(p: Point, value: T) {
         items[index(p)] = value
     }
@@ -16,6 +20,24 @@ class Grid<T>(val width: Int, val height: Int, init: (Point) -> T) {
                 for (y in 0 until height) {
                     yield(items[index(x, y)])
                 }
+            }
+        }
+    }
+
+    fun row(y: Int) = (0 until width).map { x -> get(x, y) }
+    fun rows() = Iterable {
+        iterator {
+            for (y in 0 until height) {
+                yield(row(y))
+            }
+        }
+    }
+
+    fun column(x: Int) = (0 until height).map { y -> get(x, y) }
+    fun columns() = Iterable {
+        iterator {
+            for (x in 0 until width) {
+                yield(column(x))
             }
         }
     }
