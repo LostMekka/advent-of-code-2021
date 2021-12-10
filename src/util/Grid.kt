@@ -14,6 +14,19 @@ class Grid<T>(val width: Int, val height: Int, init: (Point) -> T) {
         items[index(p)] = value
     }
 
+    operator fun contains(p: Point) =
+        p.x in 0 until width && p.y in 0 until height
+
+    fun positions() = Iterable {
+        iterator {
+            for (x in 0 until width) {
+                for (y in 0 until height) {
+                    yield(Point(x, y))
+                }
+            }
+        }
+    }
+
     fun values() = Iterable {
         iterator {
             for (x in 0 until width) {
