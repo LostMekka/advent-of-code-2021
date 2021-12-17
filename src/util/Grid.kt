@@ -54,4 +54,9 @@ class Grid<T>(val width: Int, val height: Int, init: (Point) -> T) {
             }
         }
     }
+
+    fun debugString(cellConverter: (T) -> String) =
+        rows().joinToString("\n") {
+            it.joinToString("", transform = cellConverter)
+        }
 }
