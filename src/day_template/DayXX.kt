@@ -10,8 +10,8 @@ fun main() {
     part2(testInput) shouldBe 1 // TODO
 
     val input = readInput(day)
-    println(part1(input))
-    println(part2(input))
+    println("output for part1: ${part1(input)}")
+    println("output for part2: ${part2(input)}")
 }
 
 private fun part1(input: List<String>): Int {
