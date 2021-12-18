@@ -60,3 +60,6 @@ class Grid<T>(val width: Int, val height: Int, init: (Point) -> T) {
             it.joinToString("", transform = cellConverter)
         }
 }
+
+fun <T> List<String>.toGrid(cellTransform: (Char) -> T) =
+    Grid(first().length, size) { (x, y) -> cellTransform(this[y][x]) }
