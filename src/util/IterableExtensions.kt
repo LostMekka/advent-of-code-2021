@@ -30,3 +30,41 @@ fun <T> List<T>.split(
     }
     return outerList
 }
+
+inline fun <T1, T2, R> Iterable<T1>.crossProductWith(
+    other: Iterable<T2>,
+    crossinline transform: (T1, T2) -> R,
+) = crossProductOf(this, other, transform)
+
+inline fun <T1, T2, R> crossProductOf(
+    iterable1: Iterable<T1>,
+    iterable2: Iterable<T2>,
+    crossinline transform: (T1, T2) -> R,
+) = sequence {
+    for (element1 in iterable1) {
+        for (element2 in iterable2) {
+            this.yield(transform(element1, element2))
+        }
+    }
+}
+
+inline fun <T1, T2, T3, R> Iterable<T1>.crossProductWith(
+    other1: Iterable<T2>,
+    other2: Iterable<T3>,
+    crossinline transform: (T1, T2, T3) -> R,
+) = crossProductOf(this, other1, other2, transform)
+
+inline fun <T1, T2, T3, R> crossProductOf(
+    iterable1: Iterable<T1>,
+    iterable2: Iterable<T2>,
+    iterable3: Iterable<T3>,
+    crossinline transform: (T1, T2, T3) -> R,
+) = sequence {
+    for (element1 in iterable1) {
+        for (element2 in iterable2) {
+            for (element3 in iterable3) {
+                yield(transform(element1, element2, element3))
+            }
+        }
+    }
+}
