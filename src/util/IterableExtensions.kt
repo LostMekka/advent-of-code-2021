@@ -1,5 +1,11 @@
 package util
 
+operator fun <T> List<T>.component6() = this[5]
+operator fun <T> List<T>.component7() = this[6]
+operator fun <T> List<T>.component8() = this[7]
+operator fun <T> List<T>.component9() = this[8]
+operator fun <T> List<T>.component10() = this[9]
+
 fun <T> List<T>.mutate(block: (MutableList<T>) -> Unit): List<T> =
     toMutableList().also(block)
 

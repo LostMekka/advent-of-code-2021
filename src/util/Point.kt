@@ -7,6 +7,8 @@ data class Point(val x: Int, val y: Int) {
     operator fun minus(other: Point) = Point(x - other.x, y - other.y)
     infix fun manhattanDistanceTo(other: Point) = abs(x - other.x) + abs(y - other.y)
 
+    override fun toString() = "($x, $y)"
+
     fun neighbours() =
         listOf(
             Point(x + 1, y),
